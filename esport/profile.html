@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esports Player Portal</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+body{ background:linear-gradient(to bottom,#000428,#004683); color:white; }
+
+/* NAVBAR */
+nav{ background:#000; padding:15px; text-align:center; display:flex; justify-content:center; align-items:center; gap:15px; flex-wrap:wrap;}
+nav a{ color:white; margin:0 15px; text-decoration:none; font-weight:600; }
+nav a:hover{ color:#00d4ff; }
+nav button{ padding:5px 10px; border:none; border-radius:5px; cursor:pointer; background:#ff4d4d; color:white; font-weight:600; }
+nav button:hover{ background:#cc0000; }
+
+/* SECTIONS */
+section{ padding:60px 10%; }
+h1{ text-align:center; margin-bottom:30px; }
+
+/* FORM */
+form{ max-width:500px; margin:auto; background:rgba(255,255,255,0.1); padding:30px; border-radius:15px; }
+input, select, textarea{ width:100%; padding:12px; margin:10px 0; border:none; border-radius:8px; }
+button.submit-btn{ width:100%; padding:12px; background:#00d4ff; border:none; border-radius:8px; font-size:16px; cursor:pointer; }
+button.submit-btn:hover{ background:#00aacc; }
+
+/* PLAYER CARDS */
+.cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; }
+.card{ background:rgba(255,255,255,0.15); border-radius:20px; overflow:hidden; text-align:center; transition:transform 0.3s; }
+.card:hover{ transform:translateY(-10px); }
+.card img{ width:100%; height:280px; object-fit:cover; }
+.card h3{ margin-top:15px; }
+.card p{ font-size:14px; opacity:0.9; margin-bottom:15px; }
+
+/* FOOTER */
+footer{ background:#000; text-align:center; padding:15px; margin-top:40px; }
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <a href="#home">Home</a>
+    <a href="#create">Create Profile</a>
+    <a href="#players">Players</a>
+    <button id="logoutBtn">Logout</button>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+    <h1>🎮 Esports Player Portal</h1>
+    <p style="text-align:center;">
+        A platform where esports players create profiles and showcase their gaming skills.
+    </p>
+</section>
+
+<!-- CREATE PROFILE -->
+<section id="create">
+    <h1>Create Player Profile</h1>
+
+    <form id="profileForm">
+        <input type="text" id="name" placeholder="Player Name" required>
+        <input type="text" id="tag" placeholder="Gamer Tag" required>
+        <select id="game" required>
+            <option value="">Select Game</option>
+            <option>Valorant</option>
+            <option>PUBG Mobile</option>
+            <option>CS2</option>
+        </select>
+        <input type="text" id="rank" placeholder="Rank / Level">
+        <textarea id="achievements" placeholder="Achievements"></textarea>
+        <button type="submit" class="submit-btn">Create Profile</button>
+    </form>
+</section>
+
+<!-- PLAYER PROFILES -->
+<section id="players">
+    <h1>Top Esports Players</h1>
+    <div class="cards">
+        <div class="card">
+            <img src="./photos/images (2).jfif" alt="TenZ">
+            <h3>TenZ</h3>
+            <p>Valorant • Professional Player</p>
+        </div>
+        <div class="card">
+            <img src="./photos/images (1).jfif" alt="DOK">
+            <h3>DOK</h3>
+            <p>PUBG Mobile • Esports Player</p>
+        </div>
+        <div class="card">
+            <img src="./photos/images.jfif" alt="s1mple">
+            <h3>s1mple</h3>
+            <p>CS2 • Legendary AWPer</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 Esports Player Portal | HTML & CSS Project
+</footer>
+
+<script>
+// Save form data and redirect to profile page
+document.getElementById("profileForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    localStorage.setItem("playerName", document.getElementById("name").value);
+    localStorage.setItem("gamerTag", document.getElementById("tag").value);
+    localStorage.setItem("game", document.getElementById("game").value);
+    localStorage.setItem("rank", document.getElementById("rank").value);
+    localStorage.setItem("achievements", document.getElementById("achievements").value);
+
+    // Redirect to profile page
+    window.location.href = "profileset.html";
+});
+
+// Logout button functionality
+document.getElementById("logoutBtn").addEventListener("click", function() {
+    localStorage.clear(); // Clear all profile data
+    alert("You have been logged out.");
+    window.location.href = "index.html"; // Redirect to home page
+});
+</script>
+
+</body>
+</html>

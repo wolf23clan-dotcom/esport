@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esports Portal | Sign Up</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(to bottom,#000428,#004683);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+}
+
+/* SIGNUP BOX */
+.signup-box{
+    width:420px;
+    background:rgba(255,255,255,0.15);
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.signup-box h1{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+/* INPUTS */
+.signup-box input{
+    width:100%;
+    padding:12px;
+    margin:12px 0;
+    border:none;
+    outline:none;
+    border-radius:10px;
+    background:rgba(255,255,255,0.9);
+    font-size:14px;
+}
+
+/* BUTTON */
+.signup-box button{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    background:#00d4ff;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.signup-box button:hover{
+    background:#00aacc;
+}
+
+/* LINKS */
+.signup-box p{
+    text-align:center;
+    margin-top:20px;
+    font-size:14px;
+}
+
+.signup-box a{
+    color:#00d4ff;
+    text-decoration:none;
+}
+
+.signup-box a:hover{
+    text-decoration:underline;
+}
+</style>
+</head>
+
+<body>
+
+<div class="signup-box">
+    <h1>🎮 Player Sign Up</h1>
+
+    <form id="signupForm">
+        <input type= "text" placeholder="Username or Gmail" value="jah123@gmail.com" required>
+        <input type="password" placeholder="Password" value="1234" required>
+        <input type="password" placeholder="Confirm Password" value="1234">
+
+        <button type="submit" >Create Account</button>
+    </form>
+
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+</div>
+
+</body>
+<script>
+document.getElementById("signupForm").addEventListener("submit", function(e){
+    e.preventDefault(); // prevent default form submission
+
+    
+    // Redirect to profile page
+    window.location.href = "profile.html";
+});
+</script>
+</html>

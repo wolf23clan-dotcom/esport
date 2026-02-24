@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team Setup</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+body{
+    background:radial-gradient(circle at top,#001b44,#000428);
+    color:white;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    background:rgba(255,255,255,0.12);
+    padding:30px;
+    border-radius:25px;
+    width:90%;
+    max-width:500px;
+    box-shadow:0 0 30px rgba(0,212,255,0.2);
+    text-align:center;
+}
+
+h2{
+    color:#00d4ff;
+    margin-bottom:25px;
+}
+
+.form-group{
+    margin-bottom:20px;
+    text-align:left;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+input[type="text"], input[type="file"]{
+    width:100%;
+    padding:12px;
+    border-radius:12px;
+    border:none;
+    outline:none;
+    background:rgba(255,255,255,0.1);
+    color:white;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:20px;
+    background:#00d4ff;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    width:100%;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#007788;
+}
+
+.preview-img{
+    width:150px;
+    height:150px;
+    margin-top:15px;
+    border-radius:50%;
+    object-fit:cover;
+    display:none;
+    border:3px solid #00d4ff;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>Setup Your Team</h2>
+
+<div class="form-group">
+<label for="teamName">Team Name</label>
+<input type="text" id="teamName" placeholder="Enter team name">
+</div>
+
+<div class="form-group">
+<label for="teamLogo">Team Logo (Upload from PC)</label>
+<input type="file" id="teamLogo" accept="image/*">
+<img id="preview" class="preview-img">
+</div>
+
+<button onclick="saveTeam()">Save Team</button>
+</div>
+
+<script>
+// Show image preview
+document.getElementById('teamLogo').addEventListener('change', function(e){
+    const file = e.target.files[0];
+    if(file){
+        const reader = new FileReader();
+        reader.onload = function(ev){
+            const preview = document.getElementById('preview');
+            preview.src = ev.target.result;
+            preview.style.display = "block";
+        }
+        reader.readAsDataURL(file);
+    }
+});
+
+// Save team to localStorage
+function saveTeam(){
+    const name = document.getElementById('teamName').value.trim();
+    const logo = document.getElementById('preview').src || "";
+
+    if(!name || !logo){
+        alert("Please enter team name and upload team logo!");
+        return;
+    }
+
+    const teamData = {
+        teamName: name,
+        logo: logo
+    };
+
+    localStorage.setItem("teamData", JSON.stringify(teamData));
+    alert("Team saved successfully!");
+
+    // Redirect to teamset page
+    window.location.href = "teamset.html";
+}
+</script>
+
+</body>
+</html>

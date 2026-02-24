@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat with Player</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+body{ background:linear-gradient(to bottom,#000428,#004683); color:white; min-height:100vh; display:flex; justify-content:center; align-items:center; }
+
+.chat-container{
+    width:400px;
+    height:600px;
+    background:rgba(255,255,255,0.15);
+    border-radius:20px;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+}
+
+/* HEADER */
+.chat-header{
+    background:rgba(0,212,255,0.7);
+    padding:15px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid rgba(255,255,255,0.3);
+}
+
+.chat-header h2{ font-size:18px; }
+.back-btn{
+    background:#00aacc;
+    border:none;
+    border-radius:10px;
+    padding:5px 12px;
+    cursor:pointer;
+    color:white;
+    font-weight:600;
+}
+
+.back-btn:hover{ background:#007788; }
+
+/* CHAT MESSAGES */
+.chat-messages{
+    flex:1;
+    padding:15px;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.message{
+    max-width:70%;
+    padding:10px 15px;
+    border-radius:15px;
+    word-wrap:break-word;
+}
+
+.message.received{ background:rgba(255,255,255,0.2); align-self:flex-start; }
+.message.sent{ background:#00d4ff; align-self:flex-end; color:white; }
+
+/* CHAT INPUT */
+.chat-input{
+    display:flex;
+    border-top:1px solid rgba(255,255,255,0.3);
+}
+
+.chat-input input{
+    flex:1;
+    padding:12px;
+    border:none;
+    outline:none;
+    border-radius:0;
+    font-size:14px;
+}
+
+.chat-input button{
+    background:#00d4ff;
+    border:none;
+    color:white;
+    font-weight:600;
+    padding:12px 20px;
+    cursor:pointer;
+}
+
+.chat-input button:hover{
+    background:#00aacc;
+}
+
+</style>
+</head>
+<body>
+
+<div class="chat-container">
+    <!-- HEADER -->
+    <div class="chat-header">
+        <button class="back-btn" onclick="goBack()">⬅ Back</button>
+        <h2 id="chatUser">GamerX</h2>
+    </div>
+
+    <!-- MESSAGES -->
+    <div class="chat-messages" id="chatMessages">
+        <div class="message received">Hey! Wanna play a match?</div>
+        <div class="message sent">Sure! Let's go</div>
+        <div class="message received">Great! Sending invite...</div>
+    </div>
+
+    <!-- INPUT -->
+    <div class="chat-input">
+        <input type="text" id="chatInput" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+// Go back to profile page
+function goBack(){
+    window.location.href = "profileset.html";
+}
+
+// Send message
+function sendMessage(){
+    const input = document.getElementById("chatInput");
+    const text = input.value.trim();
+    if(text !== ""){
+        const chatMessages = document.getElementById("chatMessages");
+        const msgDiv = document.createElement("div");
+        msgDiv.classList.add("message","sent");
+        msgDiv.innerText = text;
+        chatMessages.appendChild(msgDiv);
+        input.value = "";
+        chatMessages.scrollTop = chatMessages.scrollHeight; // auto scroll
+    }
+}
+
+// Allow Enter key to send message
+document.getElementById("chatInput").addEventListener("keydown", function(e){
+    if(e.key === "Enter"){
+        sendMessage();
+    }
+});
+</script>
+
+</body>
+</html>

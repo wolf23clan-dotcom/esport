@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esports Portal | Login</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(to bottom,#000428,#004683);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+}
+
+/* LOGIN BOX */
+.login-box{
+    width:360px;
+    background:rgba(255,255,255,0.15);
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.login-box h1{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+/* INPUTS */
+.login-box input{
+    width:100%;
+    padding:12px;
+    margin:12px 0;
+    border:none;
+    outline:none;
+    border-radius:10px;
+    background:rgba(255,255,255,0.9);
+    font-size:14px;
+}
+
+/* BUTTON */
+.login-box button{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    background:#00d4ff;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.login-box button:hover{
+    background:#00aacc;
+}
+
+/* LINKS */
+.login-box p{
+    text-align:center;
+    margin-top:20px;
+    font-size:14px;
+}
+
+.login-box a{
+    color:#00d4ff;
+    text-decoration:none;
+}
+
+.login-box a:hover{
+    text-decoration:underline;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+    <h1>🎮 Player Login</h1>
+
+    <form id="loginForm">
+        <input type="text" placeholder="Gamer Tag / Username" value="jah123@gmail.com" required>
+        <input type="password" placeholder="Password" value="1234" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p>New player? <a href="sign.html">Create Account</a></p>
+</div>
+
+</body>
+<script>
+// On login button click
+document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    // You can optionally check username/password here
+    // For now, just redirect to profile page
+    window.location.href = "profileset.html";
+});
+</script>
+</html>
